@@ -5,7 +5,7 @@ import os
 import re
 
 # Constants
-SAVE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/summaries"
+summary_dir = os.path.dirname(os.path.realpath(__file__)) + "/summaries"
 transcription_model = "whisper-1"
 summary_model = "gpt-4-1106-preview"
 summary_tokens = 1000
@@ -77,7 +77,7 @@ def main():
 
     # Get sanitized title and create directory
     sanitized_title = sanitize_title(yt.title)
-    save_path = os.path.join(SAVE_PATH, sanitized_title)
+    save_path = os.path.join(summary_dir, sanitized_title)
     os.makedirs(save_path, exist_ok=True)
     
     # Download audio
