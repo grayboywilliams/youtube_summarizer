@@ -46,14 +46,14 @@ def transcribe_audio(file_path, save_path, file_name="transcription.txt"):
     return response.text, transcript_file
 
 # Function to summarize text
-def summarize_text(text, title, save_path, file_name="summary.txt"):
+def summarize_text(text, title, author, save_path, file_name="summary.txt"):
     summary_file = os.path.join(save_path, file_name)
 
     response = client.chat.completions.create(
         model=summary_model,
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"The following transcript is from a YouTube video called {title}. Please provide a summary:\n\n{text}"}
+            {"role": "user", "content": f"The following transcript is from a YouTube video called {title} by {author}. Please summarize it:\n\n{text}"}
         ],
         max_tokens=summary_tokens)
     
@@ -88,8 +88,8 @@ def main():
     print(f"Transcription completed: {transcript_file}")
 
     # Summarize transcription
-    summary = summarize_text(transcript, yt.title, save_path)
-    print("Summary:\n", summary, "\n")
+    summary = summarize_text(transcript, yt.title, yt.author , save_path)
+    print("\nSummary:\n", summary, "\n")
 
 if __name__ == "__main__":
     main()
