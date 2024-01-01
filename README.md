@@ -1,14 +1,14 @@
 
 # YouTube Summarizer
 
-This tool will take a YouTube URL and max tokens as inputs and return a summary of the video within the token limit.
+This tool will take a YouTube URL and return a summary of the video.
 
 It performs 3 steps:
 1. download the audio of the video
 2. transcribe the audio
 3. summarize the transcription.
 
-Each of these are stored in a local directory created for the video.
+Each of these are stored in a local directory created for the video.\
 Once the audio or transcription have been saved, they aren't regenerated on subsequent calls, but the summary is.
 
 ## Installation
@@ -33,5 +33,5 @@ Run the main script:
 python app.py
 ```
 
-First prompt will ask for the YouTube URL.
+First prompt will ask for the YouTube URL.\
 Second prompt will ask for the max tokens (or default).
