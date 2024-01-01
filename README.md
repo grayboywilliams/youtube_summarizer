@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-To run the GPT Training Tool, follow these steps:
+To run the tool, follow these steps:
 
 ### Start the Application
 
