@@ -5,7 +5,7 @@ import os
 import re
 
 # Constants
-summary_dir = os.path.dirname(os.path.realpath(__file__)) + "/summaries"
+summary_dir = os.path.dirname(os.path.realpath(__file__)) + "\summaries"
 transcription_model = "whisper-1"
 summary_model = "gpt-4-1106-preview"
 summary_tokens = 1000
@@ -70,7 +70,6 @@ def main():
     video_url = input("Enter the YouTube video URL: ")
     tokens = input("Enter the max number of tokens in summary (or hit enter for 1000): ")
     summary_tokens = int(tokens) if tokens else summary_tokens
-    print(summary_tokens)
     
     # Create YouTube object
     yt = YouTube(video_url)
