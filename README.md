@@ -19,6 +19,8 @@ Before using, make sure to install the required packages:
 pip install -r requirements.txt
 ```
 
+And be sure that your OpenAI API Key is saved to the environment variable `OPENAI_API_KEY`.
+
 ## Usage
 
 To run the tool, follow these steps:
