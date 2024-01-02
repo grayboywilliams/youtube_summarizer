@@ -33,14 +33,14 @@ def transcribe_audio(file_path, save_path, file_name="transcription.txt"):
     transcript_file = os.path.join(save_path, file_name)
 
     if os.path.exists(transcript_file):
-        with open(transcript_file, "r") as file:
+        with open(transcript_file, "r", encoding="utf-8") as file:
             return file.read(), transcript_file
     
     response = client.audio.transcriptions.create(
         model=transcription_model,
         file=Path(file_path))
     
-    with open(transcript_file, "w") as file:
+    with open(transcript_file, "w", encoding="utf-8") as file:
         file.write(response.text)
 
     return response.text, transcript_file
@@ -58,7 +58,7 @@ def summarize_text(text, title, author, save_path, file_name="summary.txt"):
         max_tokens=summary_tokens)
     
     
-    with open(summary_file, "w") as file:
+    with open(summary_file, "w", encoding="utf-8") as file:
         file.write(response.choices[0].message.content)
 
     return response.choices[0].message.content
@@ -72,7 +72,11 @@ def main():
     summary_tokens = int(tokens) if tokens else summary_tokens
     
     # Create YouTube object
-    yt = YouTube(video_url)
+    yt = YouTube(
+        video_url,
+        use_oauth=True,
+        allow_oauth_cache=True
+    )
 
     # Get sanitized title and create directory
     sanitized_title = sanitize_title(yt.title)
